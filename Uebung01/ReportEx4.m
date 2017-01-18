@@ -5,23 +5,34 @@ figure("4");
 
 yStart = ones(30, 1);
 sigma = 1;
-sigmaStop = 10^(-5);
+sigmaStop = 10^(-2);
 d = 10;
 randn('state',7);
-result = OnePlusOneESOneFifth("SharpRidge", d, yStart, sigma, sigmaStop);
-result2 = OnePlusOneESOneFifth("ParabolicRidge", d, yStart, sigma, sigmaStop);
+
+[fitnessHistorySharpRidge, fitnessParentSharpRidge, generationCountSharpRidge, sigmaHistorySharpRidge, yParentSharpRidge] = OnePlusOneESOneFifth("SharpRidge", d, yStart, sigma, sigmaStop);
+
+[fitnessHistoryParabolicRidge, fitnessParentParabolicRidge, generationCountParabolicRidge, sigmaHistoryParabolicRidge, yParentParabolicRidge] = OnePlusOneESOneFifth("ParabolicRidge", d, yStart, sigma, sigmaStop);
 
 set (0, "defaultaxesfontname", "Helvetica")
 set (0, "defaultaxesfontsize", 14)
 set (0, "defaulttextfontname", "Helvetica")
 set (0, "defaulttextfontsize", 14) 
 
-color_blue = [0, 0, 1];
-color_red = [1, 0, 0];
 
-semilogy(result,'-', 'MarkerEdgeColor', color_blue);
+semilogy(fitnessHistorySharpRidge,'b-');
 hold on
-semilogy(result2,'.', 'MarkerEdgeColor', color_red);
+semilogy(fitnessHistoryParabolicRidge,'r-');
+
+ylabel("Function value");
+xlabel("Generation number");
+
+legend("Sharp Ridge","Parabolic Ridge");
+
+figure("5");
+
+plot(sigmaHistorySharpRidge,'b-');
+hold on
+plot(sigmaHistoryParabolicRidge,'r-');
 
 ylabel("Function value");
 xlabel("Generation number");
