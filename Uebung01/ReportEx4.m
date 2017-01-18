@@ -1,11 +1,9 @@
 % Aufgabe 4 %
 %%%%%%%%%%%%%
 
-figure("4");
-
 yStart = ones(30, 1);
 sigma = 1;
-sigmaStop = 10^(-2);
+sigmaStop = 3*10^(-3);
 d = 10;
 randn('state',7);
 
@@ -18,23 +16,54 @@ set (0, "defaultaxesfontsize", 14)
 set (0, "defaulttextfontname", "Helvetica")
 set (0, "defaulttextfontsize", 14) 
 
+figure("1");
 
 semilogy(fitnessHistorySharpRidge,'b-');
 hold on
 semilogy(fitnessHistoryParabolicRidge,'r-');
 
-ylabel("Function value");
+title("Exercise 4 - Fitness - halblogarithmisch");
+
+ylabel("Fitness Value");
 xlabel("Generation number");
 
 legend("Sharp Ridge","Parabolic Ridge");
 
-figure("5");
+figure("2");
+
+semilogy(sigmaHistorySharpRidge,'b-');
+hold on
+semilogy(sigmaHistoryParabolicRidge,'r-');
+
+title("Exercise 4 - Sigma - halblogarithmisch");
+
+ylabel("Sigma Value");
+xlabel("Mutation Strength Change Number");
+
+legend("Sharp Ridge","Parabolic Ridge");
+
+figure("3");
+
+plot(fitnessHistorySharpRidge,'b-');
+hold on
+plot(fitnessHistoryParabolicRidge,'r-');
+
+title("Exercise 4 - Fitness - linear");
+
+ylabel("Fitness Value");
+xlabel("Generation number");
+
+legend("Sharp Ridge","Parabolic Ridge");
+
+figure("4");
 
 plot(sigmaHistorySharpRidge,'b-');
 hold on
 plot(sigmaHistoryParabolicRidge,'r-');
 
-ylabel("Function value");
-xlabel("Generation number");
+title("Exercise 4 - Sigma - linear");
+
+ylabel("Sigma Value");
+xlabel("Mutation Strength Change Number");
 
 legend("Sharp Ridge","Parabolic Ridge");

@@ -17,13 +17,16 @@ set (0, "defaulttextfontsize", 14)
 color_blue = [0, 0, 1];
 color_red = [1, 0, 0];
 
-semilogy(result,'-', 'MarkerEdgeColor', color_blue);
-ylabel("Function value");
+semilogy(result,'b-');
+ylabel("Fitness value");
 xlabel("Generation number");
+
+title("Exercise 3 - Fitness - 1+1 ES");
+
 hold on
 
 maxGenCount = 7000;
 result2 = OnePlusOneES(@Sphere, yStart, sigma, maxGenCount);
-semilogy(result2,'.', 'MarkerEdgeColor', color_red);
+semilogy(result2,'r-');
 
-legend("1/5","1+1");
+legend("1+1 mit 1/5","1+1");
