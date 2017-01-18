@@ -1,0 +1,1 @@
+function y = SharpRidge(x, d)  y = -x(1) + d * sqrt(sum(x(2:end) .^ 2));end
