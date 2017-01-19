@@ -4,7 +4,7 @@ function [fitnessHistory, yHistory, generationCount] = OnePlusOneESBinary(yParen
   dimensions = size(yParent, 1);
   
   % TODO parameter
-  fitnessParent = sum(yParent);
+  fitnessParent = OneMax(yParent);
   
   yHistory = [];
   fitnessHistory = [];
@@ -14,7 +14,7 @@ function [fitnessHistory, yHistory, generationCount] = OnePlusOneESBinary(yParen
     fitnessHistory = [fitnessHistory ; fitnessParent];
     mutation = stdnormal_rnd(dimensions, 1); % normal distributed random number
     yOffspring = mod(yParent + RandomBinary(pMutation, dimensions), 2);
-    fitnessOffspring = sum(yOffspring);
+    fitnessOffspring = OneMax(yOffspring);
     if fitnessOffspring > fitnessParent
       yParent = yOffspring;
         fitnessParent = fitnessOffspring;
