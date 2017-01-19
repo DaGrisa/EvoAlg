@@ -1,7 +1,7 @@
 % Aufgabe 3 %
 %%%%%%%%%%%%%
 
-figure("3");
+figure("0");
 
 yStart = ones(100, 1);
 sigma = 1;
@@ -13,9 +13,6 @@ set (0, "defaultaxesfontname", "Helvetica")
 set (0, "defaultaxesfontsize", 14)
 set (0, "defaulttextfontname", "Helvetica")
 set (0, "defaulttextfontsize", 14) 
-
-color_blue = [0, 0, 1];
-color_red = [1, 0, 0];
 
 semilogy(result,'b-');
 ylabel("Fitness value");
