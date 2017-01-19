@@ -8,7 +8,7 @@ set (0, "defaulttextfontname", "Helvetica")
 set (0, "defaulttextfontsize", 14) 
 
 minDimensions = 10;
-increment = 58;
+increment = 10;
 maxDimensions = 300;
 
 generationsToMaxSum = sparse(maxDimensions, 1);
@@ -26,7 +26,7 @@ for r = 1:10
   drawnow();
   for N = minDimensions:increment:maxDimensions
     yStart = RandomBinary(0.5, N);
-    [~, ~, generationsToMax] = BinaryES(yStart, 1 / N);
+    [~, ~, generationsToMax] = OnePlusOneESBinary(yStart, 1 / N);
     generationsToMaxSum(N) = generationsToMaxSum(N) +  generationsToMax;
     if (r > 1) 
       delete(plotHandels(N));

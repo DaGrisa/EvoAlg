@@ -1,4 +1,4 @@
-function [fitnessHistory, yHistory, generationCount] = BinaryES(yParent, pMutation)
+function [fitnessHistory, yHistory, generationCount] = OnePlusOneESBinary(yParent, pMutation)
   generationCount = 0;
   
   dimensions = size(yParent, 1);
