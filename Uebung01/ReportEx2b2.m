@@ -11,6 +11,8 @@ minDimensions = 10;
 increment = 10;
 maxDimensions = 300;
 
+replications = 20;
+
 generationsToMaxSum = sparse(maxDimensions, 1);
 plotHandels = sparse(maxDimensions, 1);
 
@@ -21,18 +23,36 @@ ylabel("Mean generations to max");
 xlabel("Number of bits (N)");
 drawnow();
 
-for r = 1:10
+x = [];
+y = []; 
+z = 0;
+
+for r = 1:replications
   title(["Runtime complexity with ", num2str(r), " replications"]);
   drawnow();
+  
+  %color(1:3) = 1 - 1 / replications * r;
+  
+  i = 1;
   for N = minDimensions:increment:maxDimensions
     yStart = RandomBinary(0.5, N);
     [~, ~, generationsToMax] = OnePlusOneESBinary(yStart, 1 / N);
     generationsToMaxSum(N) = generationsToMaxSum(N) +  generationsToMax;
-    if (r > 1) 
-      delete(plotHandels(N));
+    
+    if (r > 1 && N > minDimensions) 
+      %delete(plotHandels(N));
     endif
-    plotHandels(N) = plot(N, generationsToMaxSum(N) / r, "marker", "*");
+    %plotHandels(N) = plot(N, generationsToMaxSum(N) / r, "marker", "*", "color", color);
+    
+    x(i) = N;
+    y(i) = generationsToMaxSum(N) / r;
+    if (z)
+      delete(prevHandle);
+    end
+    z = 1;
+    prevHandle = plot(x, y);
     drawnow();
+    i++;
   endfor
 endfor
 hold off;
