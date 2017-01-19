@@ -11,7 +11,7 @@ minDimensions = 10;
 increment = 10;
 maxDimensions = 300;
 
-replications = 20;
+replications = 50;
 
 generationsToMaxSum = sparse(maxDimensions, 1);
 plotHandels = sparse(maxDimensions, 1);
@@ -50,7 +50,7 @@ for r = 1:replications
       delete(prevHandle);
     end
     z = 1;
-    prevHandle = plot(x, y);
+    prevHandle = plot(x, y, "color", [0, 0, 0]);
     drawnow();
     i++;
   endfor
