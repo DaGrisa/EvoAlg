@@ -1,3 +1,3 @@
 function y = OneMax(x)
-  return sum(x);
+  y = sum(x);
 end
