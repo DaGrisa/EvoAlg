@@ -36,7 +36,7 @@ title("Exercise 3 - Fitness - 1+1 ES");
 yStart = ones(100, 1);
 sigma = 1;
 sigmaStop = 10^(-5);
-randn('state',7);
+
 [fitnessHistory, fitnessParent, generationCount, sigmaHistory, yParent] = OnePlusOneESOneFifth("Sphere", [], yStart, sigma, sigmaStop);
 fitnessParent
 generationCount
