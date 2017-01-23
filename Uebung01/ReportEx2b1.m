@@ -11,9 +11,9 @@ figure();
 
 yStart = RandomBinary(0.5, 100);
 pMutation = 0.01;
-fitnessHistory = BinaryES(yStart, pMutation);
-
+[fitnessHistory, ~, generationCount] = OnePlusOneESBinary(yStart, pMutation);
+generationCount
 plot(fitnessHistory);
-title("Fitness dynamic of ES 1+1 in binary search space");
+title("Fitness dynamic of (1+1)-ES in binary search space");
 ylabel("Fitness");
 xlabel("Generation");
