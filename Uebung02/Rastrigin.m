@@ -1,0 +1,1 @@
+function [y] = Rastrigin(x)  y = sum(2 - 2*cos(x.*2*pi) + x.^2);end 
